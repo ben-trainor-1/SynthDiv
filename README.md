@@ -1,18 +1,9 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# SynthDiv
+### *SynthDiv calculates the real zeros of an nth degree polynomial by synthetic division*
+## **Usage**
+- The program prompts the user for an integer that represents the degree of the polynomial
+- It then asks for the coefficients separated by commas 
+- Using that information, it automatically generates possible rational zeros and uses synthetic division to verify which zeros result in a zero remainder
+## **Improvements to be made**
+- There is zero error handling
+- Duplicate zeros result frequently with higher factor values, causing duplicate results (performance impact negligible with lower values)
