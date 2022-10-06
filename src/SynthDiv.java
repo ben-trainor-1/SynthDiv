@@ -93,7 +93,7 @@ public class SynthDiv {
         }
 
         // Factors of the leading coefficient
-        for (float b = 1; b <= leadingCoefficient; b++) {
+        for (float b = 1; b <= Math.abs(leadingCoefficient); b++) {
             if (Math.abs(leadingCoefficient) % b == 0) {
                 q.add(b);
             }
