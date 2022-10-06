@@ -3,6 +3,7 @@ public class SynthDivInstance {
 
     int remainder;
     int degree;
+    int index = 0;
     float[] coefficients;
     float[] newCoefficients;
 
@@ -12,8 +13,9 @@ public class SynthDivInstance {
         newCoefficients = new float[degree - 1];
     }
 
-    public void storeNextRemainder(int index, float r) {
+    public void storeNextRemainder(float r) {
         newCoefficients[index] = r;
+        index++;
     }
     
 }

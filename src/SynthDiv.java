@@ -37,17 +37,53 @@ public class SynthDiv {
         System.out.println("\nDividend: " + Polynomials.polyCoefficients(degree, coefficientInts));
 
 
+        // Division
+        // Store working zeros in new array and print them out
+        System.out.println("Finding rational zeros...");
+        int z = 0; // Counter variable for rational zeros list
+
+        // Calculate possible rational zeros by passing the integer coefficients to calcRationalZeros()
+        ArrayList<Float> possibleRationalZeros = SynthDiv.calcRationalZeros(coefficientInts);
+
+        // Create new ArrayList<Float> to hold the results
+        ArrayList<Float> results = new ArrayList<Float>(0);
+
+        // Try each possible zero with synthetic division
+        for (int i = 0; i < possibleRationalZeros.size(); i++) {
+            // Try next value of k
+            k = possibleRationalZeros.get(i);
+            // Pass the degree, k, and coefficients to synthDiv()
+            if (SynthDiv.synthDiv(degree, k, coefficientInts) == 0) {
+                results.add(possibleRationalZeros.get(i));
+                System.out.print(Colors.ANSI_GREEN + results.get(z) + " " + Colors.ANSI_RESET);
+                z++;
+            }
+        }
+        System.out.println(Colors.ANSI_RESET);
+        if (!(results.size() >= 1)) {
+            System.out.println("There are no rational zeros.");
+        }
+        
+
+        in.close();
+        inTwo.close();
+
+    }
+
+
+    // Calculate possible rational zeros
+    public static ArrayList<Float> calcRationalZeros(int[] coefficients) {
+
         // Calculate possible rational zeros and store them in an array of integers
         ArrayList<Float> possibleRationalZeros = new ArrayList<Float>(0);
         ArrayList<Float> p = new ArrayList<Float>(0);
         ArrayList<Float> q = new ArrayList<Float>(0);
         float constantTerm, leadingCoefficient;
-        constantTerm = coefficientInts[coefficientInts.length - 1];
-        leadingCoefficient = coefficientInts[0];
+        constantTerm = coefficients[coefficients.length - 1];
+        leadingCoefficient = coefficients[0];
         System.out.println(Colors.ANSI_BLUE + "Constant term: " + Colors.ANSI_RESET + constantTerm
                             + Colors.ANSI_BLUE + "\nLeading coefficient: " + Colors.ANSI_RESET + leadingCoefficient);
-        
-        
+
         // Find possible values of p and q
         // Factors of the constant term
         for (float a = 1; a <= Math.abs(constantTerm); a++) {
@@ -88,43 +124,22 @@ public class SynthDiv {
             }
         }
 
-
-        // Division
-        // Store working zeros in new array and print them out
-        
-        System.out.println("Finding rational zeros...");
-        int z = 0;
-        ArrayList<Float> rationalZeros = new ArrayList<Float>(0);
-        for (int i = 0; i < possibleRationalZeros.size(); i++) {
-            k = possibleRationalZeros.get(i);
-            if (SynthDiv.synthDiv(degree, k, coefficientInts).remainder == 0) {
-                rationalZeros.add(possibleRationalZeros.get(i));
-                System.out.print(Colors.ANSI_GREEN + rationalZeros.get(z) + " ");
-                z++;
-            }
-        }
-        System.out.println(Colors.ANSI_RESET);
-        if (!(rationalZeros.size() >= 1)) {
-            System.out.println("There are no rational zeros.");
-        }
-
-        in.close();
-        inTwo.close();
+        return possibleRationalZeros;
 
     }
+    
 
     // Performs synthetic division
     // Returns value of remainder
-    public static SynthDivInstance synthDiv(int degree, float k, int[] coefficients) {
-        SynthDivInstance result = new SynthDivInstance(degree);
+    public static float synthDiv(int degree, float k, int[] coefficients) {
+        float r = 0;
         
         for (int i = 0; i <= degree; i++) {
-            result.remainder += coefficients[i];
-            result.newCoefficients[i] = result.remainder;
-            result.remainder *= k;
+            r += coefficients[i];
+            r *= k;
         }
         
-        return result;
+        return r;
     }
 
 
