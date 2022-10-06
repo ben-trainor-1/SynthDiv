@@ -7,3 +7,4 @@
 ## **Improvements to be made**
 - There is zero error handling
 - Duplicate zeros result frequently with higher factor values, causing duplicate results (performance impact negligible with lower values)
+- No possibilities for 

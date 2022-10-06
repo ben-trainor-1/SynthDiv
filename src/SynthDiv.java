@@ -63,8 +63,11 @@ public class SynthDiv {
         // Store possible combinations of p and q inside possibleRationalZeros
         for (int i = 0; i < p.size(); i++) {
             for (int j = 0; j < q.size(); j++) {
-                possibleRationalZeros.add(p.get(i) / q.get(j));
-                possibleRationalZeros.add(-(p.get(i) / q.get(j)));
+                // Prevent duplicate zeros
+                if (!possibleRationalZeros.contains(p.get(i) / q.get(j))) {
+                    possibleRationalZeros.add(p.get(i) / q.get(j));
+                    possibleRationalZeros.add(-(p.get(i) / q.get(j)));
+                }
             }
         }
         System.out.println("\nPossible rational zeros of polynomial: ");
