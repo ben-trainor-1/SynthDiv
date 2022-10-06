@@ -28,14 +28,68 @@ public class Polynomials {
         StringBuffer polynomial = new StringBuffer();
 
         for (int i = 0; i <= n; i++) {
-            if (i >= 0 && i < (n - 1)) {
-                polynomial.append(coefficients[i] + "x^" + (n - i) + " + ");
+            // All positive coefficients not equal to 1, 0, or -1
+            if (coefficients[i] != 0 && coefficients[i] != 1 && coefficients[i] != -1) {
+                // First terms
+                if (i >= 0 && i < (n - 1)) {
+                    polynomial.append(coefficients[i] + "x^" + (n - i));
+                }
+                // Second to last term
+                else if (i == (n - 1)) {
+                    polynomial.append(coefficients[i] + "x + ");
+                }
+                // Constant term
+                else if (i == n) {
+                    polynomial.append(coefficients[i] + "\n");
+                }
             }
-            else if (i == (n - 1)) {
-                polynomial.append(coefficients[i] + "x + ");
+            // Coefficients equal to 1 (don't print the 1)
+            else if (coefficients[i] == 1) {
+                // First terms
+                if (i >= 0 && i < (n - 1)) {
+                    polynomial.append("x^" + (n - i));
+                }
+                // Second to last term
+                else if (i == (n - 1)) {
+                    polynomial.append(" + " + "x");
+                }
+                // Last term
+                else if (i == n) {
+                    polynomial.append(" + " + coefficients[i] + "\n");
+                }
             }
-            else if (i == n) {
-                polynomial.append(coefficients[i] + "\n");
+            // Coefficients equal to 0 (don't print anything)
+            else if (coefficients[i] == 0) {
+            }
+            // Coefficients equal to -1 (don't print the 1 unless it's the last term)
+            else if (coefficients[i] == -1) {
+                // First terms
+                if (i >= 0 && i < (n - 1)) {
+                    polynomial.append(" - " + "x^" + (n - i));
+                }
+                // Second to last term
+                else if (i == (n - 1)) {
+                    polynomial.append(" - " + "x");
+                }
+                // Last term
+                else if (i == n) {
+                    polynomial.append(" - " + -coefficients[i] + "\n");
+                }
+            }
+            // Negative coefficients
+            else if (coefficients[i] < 0) {
+                // First terms
+                if (i >= 0 && i < (n - 1)) {
+                    polynomial.append(" - " + "x^" + (n - i));
+                }
+                // Second to last term
+                else if (i == (n - 1)) {
+                    polynomial.append(" - " + "x ");
+                }
+                // Last term
+                else if (i == n) {
+                    polynomial.append(" - " + -coefficients[i] + "\n");
+                }
             }
         }
 
