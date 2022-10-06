@@ -94,7 +94,7 @@ public class SynthDiv {
 
         // Factors of the leading coefficient
         for (float b = 1; b <= leadingCoefficient; b++) {
-            if (leadingCoefficient % b == 0) {
+            if (Math.abs(leadingCoefficient) % b == 0) {
                 q.add(b);
             }
         }
