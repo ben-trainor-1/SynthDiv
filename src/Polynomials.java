@@ -29,7 +29,7 @@ public class Polynomials {
 
         for (int i = 0; i <= n; i++) {
             // All positive coefficients not equal to 1, 0, or -1
-            if (coefficients[i] != 0 && coefficients[i] != 1 && coefficients[i] != -1) {
+            if (coefficients[i] > 0 && coefficients[i] != 1 && coefficients[i] != -1) {
                 // First terms
                 if (i >= 0 && i < (n - 1)) {
                     polynomial.append(" + " + coefficients[i] + "x^" + (n - i));
@@ -84,7 +84,7 @@ public class Polynomials {
                 }
                 // Second to last term
                 else if (i == (n - 1)) {
-                    polynomial.append(" - " + "x ");
+                    polynomial.append(" - " + "x");
                 }
                 // Last term
                 else if (i == n) {
