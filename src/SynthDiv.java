@@ -55,13 +55,23 @@ public class SynthDiv {
             // Pass the degree, k, and coefficients to synthDiv()
             if (SynthDiv.synthDiv(degree, k, coefficientInts) == 0) {
                 results.add(possibleRationalZeros.get(i));
-                System.out.print(Colors.ANSI_GREEN + results.get(z) + " " + Colors.ANSI_RESET);
                 z++;
             }
         }
         System.out.println(Colors.ANSI_RESET);
         if (!(results.size() >= 1)) {
             System.out.println("There are no rational zeros.");
+        }
+        else {
+            System.out.println("The rational zeros are:" + Colors.ANSI_GREEN);
+            for (int i = 0; i < results.size(); i++) {
+                if (i < results.size() - 1) {
+                    System.out.print(results.get(i) + ", ");
+                }
+                else {
+                    System.out.println(results.get(i) + Colors.ANSI_RESET);
+                }
+            }
         }
         
 
