@@ -6,5 +6,4 @@
 - Using that information, it automatically generates possible rational zeros and uses synthetic division to verify which zeros result in a zero remainder
 ## **Improvements to be made**
 - There is zero error handling
-- Duplicate zeros result frequently with higher factor values, causing duplicate results (performance impact negligible with lower values)
-- No possibilities for 
+- No possibilities for multiplicity calculations
