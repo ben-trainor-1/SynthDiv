@@ -44,7 +44,7 @@ public class SynthDiv {
 
             // Factors of the constant term
             for (float a = 1; a <= constantTerm; a++) {
-                System.out.println("Seeing if " + a + " is a factor of " + constantTerm);
+                // System.out.println("Seeing if " + a + " is a factor of " + constantTerm);
                 if (constantTerm % a == 0) {
                     p.add(a);
                 }
@@ -52,7 +52,7 @@ public class SynthDiv {
 
             // Factors of the leading coefficient
             for (float b = 1; b <= leadingCoefficient; b++) {
-                System.out.println("Seeing if " + b + " is a factor of " + leadingCoefficient);
+                // System.out.println("Seeing if " + b + " is a factor of " + leadingCoefficient);
                 if (leadingCoefficient % b == 0) {
                     q.add(b);
                 }
@@ -86,18 +86,22 @@ public class SynthDiv {
 
         // Division
         // Store working zeros in new array and print them out
-        System.out.println("The rational zeros are:");
+        
+        System.out.println("Finding rational zeros...");
         int z = 0;
         ArrayList<Float> rationalZeros = new ArrayList<Float>(0);
         for (int i = 0; i < possibleRationalZeros.size(); i++) {
             k = possibleRationalZeros.get(i);
             if (SynthDiv.synthDiv(degree, k, coefficientInts) == 0) {
                 rationalZeros.add(possibleRationalZeros.get(i));
-                System.out.print(Colors.ANSI_GREEN + rationalZeros.get(z));
+                System.out.print(Colors.ANSI_GREEN + rationalZeros.get(z) + " ");
                 z++;
             }
         }
         System.out.println(Colors.ANSI_RESET);
+        if (!(rationalZeros.size() >= 1)) {
+            System.out.println("There are no rational zeros.");
+        }
 
         in.close();
         inTwo.close();

@@ -32,15 +32,15 @@ public class Polynomials {
             if (coefficients[i] != 0 && coefficients[i] != 1 && coefficients[i] != -1) {
                 // First terms
                 if (i >= 0 && i < (n - 1)) {
-                    polynomial.append(coefficients[i] + "x^" + (n - i));
+                    polynomial.append(" + " + coefficients[i] + "x^" + (n - i));
                 }
                 // Second to last term
                 else if (i == (n - 1)) {
-                    polynomial.append(coefficients[i] + "x + ");
+                    polynomial.append(" + " + coefficients[i] + "x");
                 }
                 // Constant term
                 else if (i == n) {
-                    polynomial.append(coefficients[i] + "\n");
+                    polynomial.append(" + " + coefficients[i] + "\n");
                 }
             }
             // Coefficients equal to 1 (don't print the 1)
