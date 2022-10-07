@@ -39,8 +39,7 @@ public class SynthDiv {
 
         // Division
         // Store working zeros in new array and print them out
-        System.out.println("Finding rational zeros...");
-        int z = 0; // Counter variable for rational zeros list
+        System.out.println("Finding rational zeros..."); // Counter variable for rational zeros list
 
         // Calculate possible rational zeros by passing the integer coefficients to calcRationalZeros()
         ArrayList<Float> possibleRationalZeros = SynthDiv.calcRationalZeros(coefficientInts);
@@ -55,7 +54,6 @@ public class SynthDiv {
             // Pass the degree, k, and coefficients to synthDiv()
             if (SynthDiv.synthDiv(degree, k, coefficientInts) == 0) {
                 results.add(possibleRationalZeros.get(i));
-                z++;
             }
         }
         System.out.println(Colors.ANSI_RESET);

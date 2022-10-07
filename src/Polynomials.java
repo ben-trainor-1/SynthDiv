@@ -29,7 +29,7 @@ public class Polynomials {
 
         for (int i = 0; i <= n; i++) {
             // All positive coefficients not equal to 1, 0, or -1
-            if (coefficients[i] > 0 && coefficients[i] != 1 && coefficients[i] != -1) {
+            if (coefficients[i] > 0 && coefficients[i] != 1) {
                 // First term
                 if (i == 0) {
                     polynomial.append(coefficients[i] + "x^" + (n - i));
@@ -55,7 +55,7 @@ public class Polynomials {
                 }
                 // Next terms
                 if (i > 0 && i < (n - 1)) {
-                    polynomial.append(" + " + coefficients[i] + "x^" + (n - i));
+                    polynomial.append(" + " + "x^" + (n - i));
                 }
                 // Second to last term
                 else if (i == (n - 1)) {
@@ -72,12 +72,12 @@ public class Polynomials {
             // Coefficients equal to -1 (don't print the 1 unless it's the last term)
             else if (coefficients[i] == -1) {
                 // First term
-                if (i == 0) {
-                    polynomial.append(" - " + "x^" + (n - i));
-                }
+                // if (i == 0) {
+                //     polynomial.append(" - " + "x^" + (n - i));
+                // }
                 // Next terms
-                if (i > 0 && i < (n - 1)) {
-                    polynomial.append(" - " + coefficients[i] + "x^" + (n - i));
+                if (i >= 0 && i < (n - 1)) {
+                    polynomial.append(" - " + "x^" + (n - i));
                 }
                 // Second to last term
                 else if (i == (n - 1)) {
@@ -89,18 +89,18 @@ public class Polynomials {
                 }
             }
             // Negative coefficients
-            else if (coefficients[i] < 0) {
+            else if (coefficients[i] < 0 && coefficients[i] != -1) {
                 // Next terms
                 if (i >= 0 && i < (n - 1)) {
                     polynomial.append(" - " + Math.abs(coefficients[i]) + "x^" + (n - i));
                 }
                 // Second to last term
                 else if (i == (n - 1)) {
-                    polynomial.append(" - " + "x");
+                    polynomial.append(" - " + Math.abs(coefficients[i]) + "x");
                 }
                 // Last term
                 else if (i == n) {
-                    polynomial.append(" - " + -coefficients[i] + "\n");
+                    polynomial.append(" - " + Math.abs(coefficients[i]) + "\n");
                 }
             }
         }
